@@ -64,8 +64,8 @@ TEST(Dot, DotException) {
 
 TEST(Dot, DotException2) {
     double u[3] = {2, 3, 1};
-    int dim_u = -1;
+    int dim_u = 3;
     double v[4] = {3, 4, 5, 6};
-    int dim_v = 4;
+    int dim_v = -1;
     ASSERT_THROW(dot(u, dim_u, v, dim_v), std::string);
 }
