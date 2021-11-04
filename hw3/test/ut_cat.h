@@ -27,7 +27,7 @@ TEST(Cat, CatGetWeight1) {
     double weight = 3.0;
     Cat cat(name, weight);
     double result = cat.getWeight();
-    ASSERT_NEAR(3.0, result, 0.001);
+    EXPECT_NEAR(3.0, result, 0.001);
 }
 
 TEST(Cat, CatGetWeight2) {
@@ -35,7 +35,7 @@ TEST(Cat, CatGetWeight2) {
     double weight = 2.8;
     Cat cat(name, weight);
     double result = cat.getWeight();
-    ASSERT_NEAR(2.8, result, 0.001);
+    EXPECT_NEAR(2.8, result, 0.001);
 }
 
 TEST(Cat, CatAddNewToy1) {
