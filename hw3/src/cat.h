@@ -51,7 +51,10 @@ private:
             _toyCollections[i].clear();
         }
         _capacityOfToyCollections = newCapacity;
-        delete [] _toyCollections;
+        if(_toyCollections) {
+            delete [] _toyCollections;
+        }
+        _toyCollections = nullptr;
         _toyCollections = newToyCollections;
     }
 };
