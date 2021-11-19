@@ -8,6 +8,8 @@ using std::string;
 class Toy {
 public:
 
+    Toy() {}
+
     // constructor with parameter
     Toy(string name) { 
         _name = name;
