@@ -27,3 +27,28 @@ TEST(Binary_right_shift, Sample4){
     Binary a;
     ASSERT_ANY_THROW(a>>1);
 }
+
+TEST(Binary_right_shift, add){
+    int bits1[2]={0, 1};
+    int bits2[2]={1, 0};
+    Binary a(bits1, 2);
+    Binary b(bits2, 2);
+    Binary result = a + b;
+    ASSERT_EQ("11", result.toString());
+}
+
+TEST(Binary_right_shift, set){
+    int bits1[2]={0, 1};
+    Binary a(bits1, 2);
+    a.setBit(1, 0);
+    ASSERT_EQ("00", a.toString());
+}
+
+TEST(Binary_right_shift, minus){
+    int bits1[3]={1, 0, 1};
+    int bits2[2]={1, 0};
+    Binary a(bits1, 3);
+    Binary b(bits2, 2);
+    Binary result = a - b;
+    ASSERT_EQ("11", result.toString());
+}

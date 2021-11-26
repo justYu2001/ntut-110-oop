@@ -97,7 +97,7 @@ public:
     }
     
     void setBit(int pos,int a){
-        if(a != 0 || a != 1) {
+        if(a != 0 && a != 1) {
             throw string("error");
         }
 
