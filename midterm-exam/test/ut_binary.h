@@ -29,12 +29,12 @@ TEST(Binary_right_shift, Sample4){
 }
 
 TEST(Binary_right_shift, add){
-    int bits1[2]={0, 1};
+    int bits1[3]={0, 1, 1};
     int bits2[2]={1, 0};
-    Binary a(bits1, 2);
+    Binary a(bits1, 3);
     Binary b(bits2, 2);
     Binary result = a + b;
-    ASSERT_EQ("11", result.toString());
+    ASSERT_EQ("101", result.toString());
 }
 
 TEST(Binary_right_shift, set){
@@ -50,5 +50,5 @@ TEST(Binary_right_shift, minus){
     Binary a(bits1, 3);
     Binary b(bits2, 2);
     Binary result = a - b;
-    ASSERT_EQ("11", result.toString());
+    ASSERT_EQ("011", result.toString());
 }

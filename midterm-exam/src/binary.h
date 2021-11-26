@@ -101,7 +101,7 @@ public:
             throw string("error");
         }
 
-        if(pos >= _size) {
+        if(pos >= _size || pos < 0) {
             throw string("error");
         }
 
