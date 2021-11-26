@@ -18,6 +18,10 @@ public:
     Binary(){ }
 
     Binary(int input[],int s){
+        if(s == 0) {
+            throw string("error");
+        }
+
         _size = s;
         for(int i = 0; i < _size; i++) {
             int currentBit = input[i];
@@ -48,12 +52,23 @@ public:
     Binary operator+(Binary const &b){
         int result = this->toInt() + b.toInt();
         this->_bitValue = bitset<100>(result);
+        _valueString =  _bitValue.to_string().substr(100 - _size, _size);
+        int sizeOfLimit = _size > b._size ? _size : b._size;
+        for(int i = 0; i < 100; i++) {
+            if(i >= sizeOfLimit && _bitValue[i] == 1) {
+                throw string("error");
+            }
+        }
         return *this;
     }
 
     Binary operator-(Binary const &b){
         int result = this->toInt() - b.toInt();
+        if(result < 0) {
+            throw string("error");
+        }
         this->_bitValue = bitset<100>(result);
+        _valueString =  _bitValue.to_string().substr(100 - _size, _size);
         return *this;
     }
 
@@ -90,8 +105,8 @@ public:
             throw string("error");
         }
 
-        _valueString[pos] = a + '0';
-        _bitValue = bitset<100>(_valueString);
+        _bitValue.set(_size - 1 - pos, a);
+        _valueString =  _bitValue.to_string().substr(100 - _size, _size);
     }
 
     int toInt() const{
