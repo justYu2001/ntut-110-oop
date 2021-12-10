@@ -34,10 +34,10 @@ public:
       _numerator = abs(numerator / gcdOfNumeratorAndDenominator);
       _denominator = abs(denominator / gcdOfNumeratorAndDenominator);
 
-      if(numerator < 0 || denominator < 0) {
-          _sign = '-';
-      } else {
+      if((numerator < 0 & denominator < 0) || (numerator > 0 && denominator > 0)) {
           _sign = '+';
+      } else {
+          _sign = '-';
       }
   }
 
