@@ -30,15 +30,15 @@ public:
           throw string("undefined");
       }
 
-      int gcdOfNumeratorAndDenominator = gcd(numerator, denominator);
-      _numerator = abs(numerator / gcdOfNumeratorAndDenominator);
-      _denominator = abs(denominator / gcdOfNumeratorAndDenominator);
-
-      if((numerator < 0 & denominator < 0) || (numerator > 0 && denominator > 0)) {
+      if(numerator * denominator >= 0) {
           _sign = '+';
       } else {
           _sign = '-';
       }
+
+      int gcdOfNumeratorAndDenominator = gcd(numerator, denominator);
+      _numerator = abs(numerator / gcdOfNumeratorAndDenominator);
+      _denominator = abs(denominator / gcdOfNumeratorAndDenominator);
   }
 
   // get the numerator of the fraction
@@ -75,22 +75,28 @@ public:
 
   // addition of two Fractions
   Fraction operator + (Fraction const & f) const {
-      int newNumerator = _numerator * f._denominator + f._numerator * _denominator;
+      int numerator1 = this->sign() == '+' ? _numerator : - _numerator;
+      int numerator2 = f.sign() == '+' ? f._numerator : -f._numerator;
+      int newNumerator = numerator1 * f._denominator + numerator2 * _denominator;
       int newDenominator = _denominator * f._denominator;
       return Fraction(newNumerator, newDenominator);
   }
 
   // subtraction of two Fractions
   Fraction operator - (Fraction const & f) const {
-      int newNumerator = _numerator * f._denominator - f._numerator * _denominator;
+      int numerator1 = this->sign() == '+' ? _numerator : - _numerator;
+      int numerator2 = f.sign() == '+' ? f._numerator : -f._numerator;
+      int newNumerator = numerator1 * f._denominator - numerator2 * _denominator;
       int newDenominator = _denominator * f._denominator;
       return Fraction(newNumerator, newDenominator);
   }
 
   // division of two Fractions
   Fraction operator / (Fraction const & f) const {
-      int newNumerator = _numerator * f._denominator;
-      int newDenominator = _denominator * f._numerator;
+      int numerator1 = this->sign() == '+' ? _numerator : - _numerator;
+      int numerator2 = f.sign() == '+' ? f._numerator : -f._numerator;
+      int newNumerator = numerator1 * f._denominator;
+      int newDenominator = _denominator * numerator2;
       return Fraction(newNumerator, newDenominator);
   }
 
