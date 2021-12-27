@@ -66,6 +66,11 @@ public:
             newTerms.push_back(sumTerm);
         }
 
+        while(newTerms.size() > 1 && newTerms.back().coefficient() == 0) {
+            newTerms.pop_back();
+            newDegree--;
+        }
+
         return Polynomial(newTerms, newDegree);
     }
 
